@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.instagram
+package com.example.jetpackcompose.instagram.ui
 
 import android.util.Patterns
 import androidx.compose.foundation.Image
@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -36,7 +37,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -45,47 +45,41 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.jetpackcompose.R
-import java.util.regex.Pattern
 
 @Composable
-fun Login() {
+fun Login(loginViewModel: LoginViewModel) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(8.dp)
     ) {
         Header(Modifier.align(Alignment.TopEnd))
-        Body(Modifier.align(Alignment.Center))
+        Body(Modifier.align(Alignment.Center), loginViewModel)
         Footer(Modifier.align(Alignment.BottomCenter))
     }
 }
 
 @Composable
-fun Body(modifier: Modifier) {
-    var email by rememberSaveable {
-        mutableStateOf("")
-    }
+fun Body(modifier: Modifier, loginViewModel: LoginViewModel) {
 
-    var password by rememberSaveable {
-        mutableStateOf("")
-    }
+    val email by loginViewModel.email.observeAsState("")
+    val password by loginViewModel.password.observeAsState("")
+    val isLoginEnabled by loginViewModel.enabled.observeAsState(false)
 
-    var isLoginEnabled by rememberSaveable {
-        mutableStateOf(false)
-    }
+
 
     Column(modifier) {
         Logo(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.size(16.dp))
         Email(email) {
-            email = it
-            isLoginEnabled = enabledLogin(email, password)
+            loginViewModel.onLoginChange(email = it, password = password)
         }
         Spacer(modifier = Modifier.size(4.dp))
         Password(password) {
-            password = it
-            isLoginEnabled = enabledLogin(email, password)
+            loginViewModel.onLoginChange(email = email, password = it)
         }
         ForgetPassword(Modifier.align(Alignment.End))
         Spacer(modifier = Modifier.size(16.dp))
@@ -97,9 +91,7 @@ fun Body(modifier: Modifier) {
     }
 }
 
-fun enabledLogin(email: String, password: String): Boolean {
-    return Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
-}
+
 
 @Composable
 fun Footer(modifier: Modifier) {
@@ -278,5 +270,5 @@ fun Header(modifier: Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginHeader() {
-    Login()
+    Login(LoginViewModel())
 }

@@ -3,15 +3,8 @@ package com.example.jetpackcompose
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.jetpackcompose.instagram.Login
-import com.example.jetpackcompose.jetpackComposeCatalago.layouts.ScaffoldExample
-import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.RecyclerViewWithHeader
-import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.RecyclerViewWithState
-import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SimpleRecyclerView
-import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SuperHeroGrid
-import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SuperHeroView
-import com.example.jetpackcompose.navigation.MyNavigation
-import com.example.jetpackcompose.twitter.TwitterScreen
+import com.example.jetpackcompose.instagram.ui.Login
+import com.example.jetpackcompose.instagram.ui.LoginViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
             }*/
 
-            MyNavigation()
+            Login(LoginViewModel())
 
 
         }
