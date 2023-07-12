@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.jetpackComposeCatalago
+package com.example.jetpackcompose.jetpackComposeCatalago.text
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

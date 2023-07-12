@@ -10,6 +10,12 @@ data class Recipe(
     val ingredients: List<String>
 )
 
+data class CheckInfo(
+    val title: String,
+    val status: Boolean,
+    val onChangeState: (Boolean) -> Unit
+)
+
 val recipesList = listOf(
     Recipe(
         R.mipmap.header,
@@ -170,4 +176,11 @@ val recipesList = listOf(
             "Mostaza Dij"
         )
     )
+)
+
+data class SuperHero(
+    val superheroName: String,
+    val realName: String,
+    val publisher: String,
+    @DrawableRes var photo: Int
 )

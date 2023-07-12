@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.jetpackComposeCatalago
+package com.example.jetpackcompose.jetpackComposeCatalago.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column

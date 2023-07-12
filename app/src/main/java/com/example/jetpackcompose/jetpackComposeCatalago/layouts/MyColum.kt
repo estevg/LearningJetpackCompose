@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.jetpackComposeCatalago
+package com.example.jetpackcompose.jetpackComposeCatalago.layouts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
