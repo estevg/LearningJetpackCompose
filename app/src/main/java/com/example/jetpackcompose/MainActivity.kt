@@ -10,6 +10,7 @@ import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.RecyclerVi
 import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SimpleRecyclerView
 import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SuperHeroGrid
 import com.example.jetpackcompose.jetpackComposeCatalago.recyclerView.SuperHeroView
+import com.example.jetpackcompose.navigation.MyNavigation
 import com.example.jetpackcompose.twitter.TwitterScreen
 
 
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
             }*/
 
-            ScaffoldExample()
+            MyNavigation()
 
 
         }
