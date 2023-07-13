@@ -2,12 +2,17 @@ package com.example.jetpackcompose
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jetpackcompose.instagram.ui.Login
 import com.example.jetpackcompose.instagram.ui.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val loginViewModel: LoginViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -46,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
             }*/
 
-            Login(LoginViewModel())
+            Login(loginViewModel)
 
 
         }

@@ -2,13 +2,10 @@ package com.example.jetpackcompose.instagram.domain
 
 import android.util.Log
 import com.example.jetpackcompose.instagram.data.LoginRepo
+import javax.inject.Inject
 
-class LoginUseCase {
-
-    private val repository = LoginRepo()
-
-    suspend operator fun invoke(user: String, password: String): Boolean {
-        Log.d("HIIIII", "TEST")
-       return repository.doLogin(user, password)
+class LoginUseCase @Inject constructor(private val repository: LoginRepo) {
+    suspend operator fun invoke(): Boolean {
+        return repository.doLogin()
     }
 }

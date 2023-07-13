@@ -271,9 +271,3 @@ fun Header(modifier: Modifier) {
         contentDescription = "close",
         modifier = modifier.clickable { })
 }
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewLoginHeader() {
-    Login(LoginViewModel())
-}
